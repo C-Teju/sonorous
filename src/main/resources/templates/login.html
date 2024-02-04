@@ -6,8 +6,14 @@
 <link rel="stylesheet" th:href="@{/css/loginStyle.css}">
 </head>
 <body>
-	<h1>User Login</h1>
-	<form action="validate" method="POST">
+<script th:if="${loginError}">
+	 alert("Incorrect username or password!");
+		
+	</script>
+	<h2>User Login</h2>
+	<div class="login-page">
+	
+	<form action="validate" method="POST" >
 		<label>Email: </label>
 			<input type="email" name="email" required />
 			<br/>
@@ -17,5 +23,6 @@
 			<input type="submit" value="LOGIN">
 	</form>
 	
+	</div>      
 </body>
 </html>

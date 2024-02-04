@@ -2,9 +2,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Dispay Playlists</title>
+<link rel="stylesheet" th:href="@{/css/displayPlaylistsStyle.css}">
 </head>
 <body>
+<nav>
+  <div th:if="${userRole == 'admin'}">
+        <a href="adminHome">Admin Home</a>
+        <a href="addSong">Add Songs</a>
+        <a href="viewSongs">View Songs</a>
+        <a href="createPlaylist">Create Playlist</a>
+        <a href="logout">Logout</a>
+        </div>
+        <div th:if="${userRole == 'customer'}">
+        <a href="createPlaylist">Create Playlist</a>
+        <a href="customerHome">Customer Home</a>
+        <a href="logout">Logout</a>
+    </div>
+</nav>
+    <main>
+    <h3>Playlists</h3>
 	<table border>
 		<thead>
 			<tr>
@@ -29,5 +46,6 @@
 			</tr>
 		</tbody>
 	</table>
+	</main>
 </body>
 </html>

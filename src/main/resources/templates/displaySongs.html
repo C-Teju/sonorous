@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/displaySongs.css}">
+
+<title>Display Songs</title>
 <style type="text/css">
 iframe {
 	height: 50px;
@@ -11,6 +13,15 @@ iframe {
 </style>
 </head>
 <body>
+<nav>
+        <a href="adminHome">Admin Home</a>
+        <a href="addSong">Add Songs</a>
+        <a href="createPlaylist">Create Playlist</a>
+        <a href="viewPlaylists">View Playlists</a>
+        <a href="logout">Logout</a>
+    </nav>
+    <main>
+    <h3>Songs</h3>
 	<table border>
 		<thead>
 			<tr>
@@ -34,5 +45,6 @@ iframe {
 
 		</tbody>
 	</table>
+	</main>
 </body>
 </html>

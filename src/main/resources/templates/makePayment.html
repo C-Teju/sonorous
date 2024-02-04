@@ -4,14 +4,19 @@
 
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+  <link rel="stylesheet" th:href="@{/css/makePayment.css}">
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </head>
 <body>
-	<h1>Why Premium ?</h1>
-	<p>blah..blah..!</p>
+ <div class="payment-page">
+        
+	<h2>Why Premium ?</h2>
+	<div class="payment-heading">
+	<p>Because it's good !</p>
+	 </div>
 	<form id="payment-form">
 		<button type="submit" class="buy-button">Buy</button>
 	</form>
@@ -64,24 +69,27 @@ make sure the class and is both match -->
 			});
 		}
 
+		
+		
+		
 		function verifyPayment(orderId, paymentId, signature) {
-			$.post("/verify", {
-				orderId : orderId,
-				paymentId : paymentId,
-				signature : signature
-			}).done(function(isValid) {
-				if (isValid) {
-					console.log("Payment successful");
-				} else {
-					console.log("Payment failed");
-				}
-			}).fail(function(error) {
-				console.error("Error:", error);
-			});
+		     $.post("/verify", { orderId: orderId, paymentId: paymentId, signature: signature })
+		         .done(function(isValid) {
+		             if (isValid) {
+		                 alert("Payment successful");
+		                 window.location.href = 'payment-success';
+		             } else {
+		                 alert("Payment failed");
+		                 window.location.href = 'payment-failure';
+		             }
+		         })
+		         .fail(function(error) {
+		             console.error("Error:", error);
+		         });
 		}
 	</script>
 
-
+</div>
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+/* CSS for Make Payment Page */
+
+body {
+   background-image: url('https://i.pinimg.com/564x/14/c9/8b/14c98bbdeac3bc7954d8943a6e03392c.jpg');
+  background-repeat: repeat;
+    color: #0af;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.payment-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #566582;
+    margin: auto;
+    margin-top: 100px;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #0af;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(20, 100, 150, 0.5);
+}
+
+.payment-page {
+    
+  font-size: 1.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #00f;
+    text-align:center;
+}
+
+.payment-content {
+    margin-top: 20px;
+    color: #0af;
+}
+
+.buy-button {
+    margin-top: 10px;
+    background-color: #f08080;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #ff6b6b;
+    color: #fff;
+}

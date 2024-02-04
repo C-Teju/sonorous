@@ -3,10 +3,12 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Register</title>
+		<link rel="stylesheet" th:href="@{/css/registrationStyle.css}">
 	</head>
 	<body>
 		<!--Note: All the name attribute in the input tag should be the
 		same as the variables in entity class-->
+		<h2>Register</h2>
 		<form action="register" method="POST">
 			<label>User Name: </label>
 			<input type="text" name="username" required />
@@ -17,14 +19,18 @@
 			<label>Password: </label>
 			<input type="password" name="password" required />
 			<br/>
-			<label>Gender: </label>
-			<input type="radio" name="gender" value="male" />Male
-			<input type="radio" name="gender" value="female" />Female
-			<input type="radio" name="gender" value="others" />Others
+			<label class="gender">Gender: </label>
+			<div class="radio-group">
+			<input type="radio" name="gender" value="male"  />Male
+			<input type="radio" name="gender" value="female"  />Female
+			<input type="radio" name="gender" value="others"  />Others
+			 </div>
 			<br/>
-			<label>Role: </label>
+			<label class="role">Role: </label>
+			<div class="radio-group">
 			<input type="radio" name="role" value="admin" />Admin
 			<input type="radio" name="role" value="customer" />Customer
+			 </div>
 			<br/>
 			<label>Address</label>
 			<textarea name="address"></textarea>

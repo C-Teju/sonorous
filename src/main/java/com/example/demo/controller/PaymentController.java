@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entities.Users;
@@ -13,12 +13,9 @@ import com.example.demo.services.UsersService;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
+import com.razorpay.Utils;
 
 import jakarta.servlet.http.HttpSession;
-
-
-
-
 
 
 @Controller
@@ -31,7 +28,19 @@ public class PaymentController {
 	public String makePayment() {
 		return "makePayment";
 	}
+	@GetMapping("/payment-success")
+	public String paymentSuccess(HttpSession session) {
+		String mail =  (String) session.getAttribute("email");
+		Users u = service.getUser(mail);
+		u.setPremium(true);
+		service.updateUser(u);
+		return "login";
+	}
 	
+	@GetMapping("/payment-failure")
+	public String paymentFailure() {
+		return "customerHome";
+	}
 	
 	@SuppressWarnings("finally")
 	@PostMapping("/createOrder")
@@ -64,19 +73,27 @@ public class PaymentController {
 		}
 	}
 	
-//	@GetMapping("/makePayment")
-//	public String makePayment2(@RequestParam("email") String email) {
-//		
-//		Users u = service.getUser(email);
-//		if(u.isPremium()==true) {
-//			return "displaySongs";
-//		}
-//		
-//		else {
-//			return "customerHome";
-//		}
-//		
-//	}
+
+	
+	
+	@PostMapping("/verify")
+	@ResponseBody
+	public boolean verifyPayment(@RequestParam  String orderId, @RequestParam String paymentId, @RequestParam String signature) {
+	    try {
+	        // Initialize Razorpay client with your API key and secret
+	        RazorpayClient razorpayClient = new RazorpayClient("rzp_test_GQesAPyg7iVbbz", "noQsixP6LjHxl9LmRCiSm8ux");
+	        // Create a signature verification data string
+	        String verificationData = orderId + "|" + paymentId;
+
+	        // Use Razorpay's utility function to verify the signature
+	        boolean isValidSignature = Utils.verifySignature(verificationData, signature, "noQsixP6LjHxl9LmRCiSm8ux");
+
+	        return isValidSignature;
+	    } catch (RazorpayException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 	
 	
 	

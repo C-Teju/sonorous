@@ -1,37 +1,49 @@
-html{
-    font-size: 62.5%;
-    box-sizing: border-box;
-}
-body{
+body {
+     background-image: url('https://i.pinimg.com/564x/14/c9/8b/14c98bbdeac3bc7954d8943a6e03392c.jpg');
+  background-repeat: repeat;
+    color: #0af; /* Light blue text */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(40, 38, 38);
-    
-    }
-    
-.home{
-    margin-top: 17rem;
-}
-.home-heading{
-    letter-spacing: .2rem;
-    color: #7df9ff;
-    font-size: 5rem;
-    font-weight: 100rem;
     display: flex;
-    flex-direction:row;
-    text-align: center;
+    align-items: center;
     justify-content: center;
-    
+    height: 100vh;
 }
-.home-nav{
-    font-size: 2rem;
-    flex-direction: column;
+
+.home {
+    background-color:#4d4949 ;
     text-align: center;
-    justify-content: center;
+    padding: 100px;
+    border: 1px  solid #0af; /* Light blue border */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(20, 100, 150, 0.5);
 }
-.button{
-    color: #7df9ff;
-    background-color: rgb(138, 135, 135);
-    border-radius: 1rem;
+
+.home-heading {
+  font-size: 1.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #00f;
+    text-align:center;
+}
+
+.home-nav {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #057; /* Dark blue */
+    color: #0af; /* Light blue text */
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #069; /* Slightly lighter blue on hover */
+    color: #0af; /* Light blue text */
 }

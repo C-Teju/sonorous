@@ -3,23 +3,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Home</title>
+<link rel="stylesheet" th:href="@{/css/adminHomeStyle.css}">
 <style type="text/css">
 
 </style>
 </head>
 <body>
-<p>Administrator Home page</p>
+
+<p>Admin Home page</p>
+<div class="links">
+<a href="newSong">Add new song</a>
+<br/>
+
+<a href="viewSongs">View all songs</a>
+<br/>
+
+<a href="createPlaylist">Create Playlist</a>
+<br/>
+
+<a href="viewPlaylists">View Playlists</a>
+<br/>
+
+</div>
+
+ <footer>
+     <span>  <a href="logout">Logout</a></span> 
+    </footer>
+    
 </body>
-<a href="newSong">Add new song.</a>
-<br/>
-
-<a href="viewSongs">View all songs.</a>
-<br/>
-
-<a href="createPlaylist">Create a Playlist.</a>
-<br/>
-
-<a href="viewPlaylists">View Playlists.</a>
-<br/>
-
 </html>

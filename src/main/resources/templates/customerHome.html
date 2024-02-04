@@ -2,12 +2,74 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Customer Home</title>
+
+<link rel="stylesheet" th:href="@{/css/customerHomeStyle.css}">
 </head>
 <body>
-<p>Customer home page</p>
-<a href="makePayment">Get Premium</a>
-<nav><a href="logout">Logout</a></nav>
+<main>
+<div class="customer-heading">
+<h3 th:if="${username}">Hi <span th:text="${username}">User</span> !</h3>
+    <h3 th:unless="${username}">Welcome to Sonorous!</h3>
+        </div>
+<div class="customer-home">
+        
+	 <div class="customer-content">
 
+	<div th:unless="${isPremium}" class="non-premium">
+	<form action="makePayment" method="GET">
+                    <button type="submit" class="customer-button">Get Premium</button>
+                </form>
+		
+		
+	</div>
+
+	<div th:if="${isPremium}" class="premium">
+	<nav class="navbar">
+        <a href="createPlaylist" class="nav-link">Create Playlist</a>
+        <a href="viewPlaylists" class="nav-link">View Playlist</a>
+        <a href="logout" class="nav-link">Logout</a>
+    </nav>
+	<div class="others">
+	<div class="other">	
+	<form th:action=@{/searchSongs} method="GET" class="search-form">
+	
+	<input type="text" name="query" placeholder="Search" class="others1">
+	<button type="submit" class="others2 customer-button">Search</button>
+	
+	</form>
+	</div>
+		<div th:if="${message}">
+	    <p th:text="${message}" class="not-found-message"></p>
+		</div>
+	</div>
+<br/>
+		<table border class="customer-table" th:if="${songs != null and not #lists.isEmpty(songs)}">
+		<thead>
+			<tr >
+				<th class="table">Name</th>
+				<th class="table">Artist</th>
+				<th class="table">Genre</th>
+				<th class="table">Play</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="table" th:each="song:${songs}">
+				<td class="table" th:text="${song.name}"></td>
+				<td class="table" th:text="${song.artist}"></td>
+				<td class="table" th:text="${song.genre}"></td>
+				<td > 
+					<audio controls>
+						<source th:src="${song.link}" type="audio/mpeg">
+					</audio>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+	</div>
+    </div>
+    <br/>
+</main>
 </body>
 </html>

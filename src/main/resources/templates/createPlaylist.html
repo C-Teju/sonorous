@@ -3,8 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/createPlaylistStyle.css}">
 </head>
 <body>
+<nav>
+    <div th:if="${userRole == 'admin'}">
+        <a href="adminHome">Admin Home</a>
+        <a href="addSong">Add Songs</a>
+        <a href="viewSongs">View Songs</a>
+        <a href="viewPlaylists">View Playlists</a>
+        <a href="logout">Logout</a>
+    </div>
+    <div th:if="${userRole == 'customer'}">
+        <a href="viewPlaylists">View Playlist</a>
+        <a href="customerHome">Customer Home</a>
+        <a href="logout">Logout</a>
+    </div>
+    
+</nav>
+    <main>
+<h3>Create Playlists</h3>
 	<form action="addPlaylist" method="POST">
 		<label>Playlist name:</label>
 		<input type="text" name="name" />
@@ -16,5 +34,6 @@
 		</div>
 		<input type="submit" value="Add Playlist" />
 	</form>
+	</main>
 </body>
 </html>

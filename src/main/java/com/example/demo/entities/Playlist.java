@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Playlist {
@@ -18,6 +20,7 @@ public class Playlist {
 	@ManyToMany
 	List<Song> songs;
 
+	
 	public Playlist() {
 		super();
 	}
@@ -57,6 +60,10 @@ public class Playlist {
 	public String toString() {
 		return "Playlist [id=" + id + ", name=" + name + ", songs=" + songs + "]";
 	}
+
+	
+	
+	
 	
 	
 	

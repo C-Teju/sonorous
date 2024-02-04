@@ -2,9 +2,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/newSongStyle.css}">
+
+<title>Add Songs</title>
 </head>
 <body>
+<nav>
+        <a href="adminHome">Admin Home</a>
+        <a href="viewSongs">View All Songs</a>
+        <a href="createPlaylist">Create Playlist</a>
+        <a href="viewPlaylists">View Playlists</a>
+        <a href="logout">Logout</a>
+    </nav>
+    <main>
+<h3>Add Song</h3>
 <form action="addSong" method="POST">
 
 <label>Song name: </label>
@@ -25,6 +36,6 @@
 
 <input type="submit" value="Add Song"/>
 </form>
-
+</main>
 </body>
 </html>

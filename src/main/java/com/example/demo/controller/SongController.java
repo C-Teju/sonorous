@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entities.Song;
 import com.example.demo.services.SongService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class SongController {
@@ -49,4 +51,36 @@ public class SongController {
 		}
 		
 	}
+	
+		@GetMapping("/searchSongs")
+		public String searchSongs(@RequestParam( name="query",required=false) String query, Model model) {
+			if(query!=null && !query.isEmpty()) {
+				List<Song> searchResults=service.searchSongs(query);
+				model.addAttribute("songs",searchResults);
+			}else {
+				List<Song> allSongs=service.findAllSongs();
+				  
+			        if (allSongs.isEmpty()) {
+			            model.addAttribute("message", "No songs found.");
+			        } else {
+			            model.addAttribute("songs", allSongs);
+			        }
+			}
+			
+			return "displaySongs";
+		}
+		
+		
+		 @GetMapping("/adminHome")
+		    public String adminHome() {
+		        return "adminHome";
+		    }
+		 @GetMapping("/addSong")
+		 public String addSong() {
+		 	return "newSong";
+		 }
+		 
+		 
+		
+		
 }

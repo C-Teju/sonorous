@@ -25,11 +25,12 @@ public class UsersServiceImplimentation implements UsersService {
 	@Override
 	public boolean validateUser(String email, String password) {
 		Users user=repo.findByEmail(email);
-		String db_password=user.getPassword();
-		if(password.equals(db_password)) {
-			return true;
+		if(user!=null) {
+			String db_password=user.getPassword();
+			return password.equals(db_password);
 		}
-		else{
+				
+		else {
 			return false;
 		}
 		
@@ -47,6 +48,11 @@ public class UsersServiceImplimentation implements UsersService {
 	@Override
 	public void updateUser(Users user) {
 		repo.save(user);		
+	}
+	@Override
+	public Users getUserByEmailAndPassword(String email, String password) {
+		
+		return repo.findByEmailAndPassword(email, password);
 	}
 
 }
